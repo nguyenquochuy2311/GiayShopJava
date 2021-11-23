@@ -119,7 +119,7 @@ public class Tree {
         }
     }*/
 
-    /*
+    
     // Level traversal (Breadth-first search)
     public static < T > void levelOrderTraverse(Node < T > node) {
         if (node == null)
@@ -142,7 +142,7 @@ public class Tree {
             if (next.right != null)
                 queue.add(next.right);
         }
-    }*/
+    }
 
     public static void main(String[] args) {
         // We create the nodes of our tree
@@ -198,11 +198,11 @@ public class Tree {
 //        System.out.println("Iterative Post Order Traversal");
 //        iterativePostOrderTraverse(root);
 
-//        System.out.println("\n");
-//        System.out.println("========");
-//        System.out.println();
-//        System.out.println("Level Order Traversal");
-//        levelOrderTraverse(root);
+        System.out.println("\n");
+        System.out.println("========");
+        System.out.println();
+        System.out.println("Level Order Traversal");
+        levelOrderTraverse(root);
 
         System.out.println("\n");
     }
