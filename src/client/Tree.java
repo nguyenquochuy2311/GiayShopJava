@@ -38,7 +38,7 @@ public class Tree {
                 nodeStack.push(currentNode.left);
         }
 
-    }
+    }*/
 
     // Left, Root, Right
     public static < T > void inOrderTraverse(Node < T > node) {
@@ -174,9 +174,9 @@ public class Tree {
         System.out.println("Pre Order Traversal");
         preOrderTraverse(root);
 
-        System.out.println("\n");
-        System.out.println("Iterative Pre Order Traversal");
-        iterativePreOrderTraverse(root);
+//        System.out.println("\n");
+//        System.out.println("Iterative Pre Order Traversal");
+//        iterativePreOrderTraverse(root);
 
         System.out.println("\n");
         System.out.println("========");
