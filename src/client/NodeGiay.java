@@ -31,11 +31,11 @@ public class NodeGiay {
 		this.right = right;
 	}
 	
-	public static <Giay> void preOrderTraverse() {
-
-        System.out.print(listGiay. + " ");
-        preOrderTraverse(node.left);
-        preOrderTraverse(node.right);
-        return null;
-    }
+//	public static <Giay> void preOrderTraverse() {
+//
+//        System.out.print(listGiay. + " ");
+//        preOrderTraverse(node.left);
+//        preOrderTraverse(node.right);
+//        return null;
+//    }
 }
