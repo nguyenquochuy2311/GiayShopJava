@@ -13,9 +13,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import client.Node;
-import client.NodeGiay;
 import model.Giay;
+import service.NodeGiay;
 
 public class GiayDAO{
 	
@@ -52,6 +51,36 @@ public class GiayDAO{
 			closeStream(oos);
 		}
 	}
+	
+	public void NhapFile(NodeGiay TList) {
+		FileOutputStream fos = null;
+		ObjectOutputStream oos = null;
+		try {
+			fos = new FileOutputStream(new File(GIAY_FILE));
+			oos = new ObjectOutputStream(fos);
+			List<Giay> OList = createOrderedList(TList);
+			oos.writeObject(OList);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			closeStream(oos);
+		}
+	}
+
+	 private List<Giay> createOrderedList(NodeGiay root) {
+	     if(root == null) {
+	         return new ArrayList<>();
+	     }
+
+	     List<Giay> list = new ArrayList<>();
+	     list.addAll(createOrderedList(root.getLeft()));
+	     list.add(root.getGiay());
+	     list.addAll(createOrderedList(root.getRight()));
+
+	     return list;
+	 }
 	
 	public List<Giay> DocFile(){
 		List<Giay> TList = new ArrayList<>();
@@ -93,10 +122,6 @@ public class GiayDAO{
             closeStream(ois);
         }
 		
-		if(TList.size()==0) {
-			return null;
-		}
-		
 		List<Giay> linkedList = new LinkedList<>();
 		for (Giay e: TList) {
             linkedList.add(e);
@@ -122,8 +147,8 @@ public class GiayDAO{
             closeStream(fis);
             closeStream(ois);
         }
-		
-		if(TList.size()==0) {
+
+		if(TList.isEmpty()) {
 			return null;
 		}
 		
@@ -135,13 +160,7 @@ public class GiayDAO{
 			return null;
 		}
 		int mid = (start + end)/2;
-		Giay giay_mid = new Giay();
-		giay_mid.setma_giay(giay.get(mid).getma_giay());
-		giay_mid.setten_giay(giay.get(mid).getten_giay());
-		giay_mid.setdon_gia(giay.get(mid).getdon_gia());
-		giay_mid.setthuong_hieu(giay.get(mid).getthuong_hieu());
-		giay_mid.setngay_sx(giay.get(mid).getngay_sx());
-		NodeGiay node = new NodeGiay(giay_mid);
+		NodeGiay node = new NodeGiay(giay.get(mid));
 		node.setLeft(createBinaryTree(giay, start, mid-1));
 		node.setRight(createBinaryTree(giay, mid+1, end));
 		

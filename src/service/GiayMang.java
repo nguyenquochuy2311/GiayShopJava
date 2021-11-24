@@ -1,35 +1,35 @@
-package client;
+package service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import DAO.GiayDAO;
 import model.Giay;
 
-public class GiayDanhSachLienKetDon {
-
-	private LinkedList<Giay> listGiay;	
-	
+public class GiayMang {
+	private List<Giay> listGiay;
+    
 	private GiayDAO giayDao;
 	
-	public GiayDanhSachLienKetDon() {
+	public GiayMang() {
 		giayDao = new GiayDAO();
-		setListGiay(giayDao.DocFileDSLKD());
+		setListGiay(giayDao.DocFile());
 	}
 	
-	public List<Giay> getListGiay() {
+    public List<Giay> getListGiay() {
 		return listGiay;
 	}
 
-	public void setListGiay(LinkedList<Giay> listGiay) {
+	public void setListGiay(List<Giay> listGiay) {
 		this.listGiay = listGiay;
 	}
-
+	
 	public void Input(int n)
     {
         for(int i = 0; i <n; i++) {
@@ -252,6 +252,7 @@ public class GiayDanhSachLienKetDon {
 				}
 				giayDao.NhapFile(listGiay);
 				dem++;
+				break;
 			}
 		}
 		
@@ -305,5 +306,4 @@ public class GiayDanhSachLienKetDon {
             }
         }
     }
-	
 }

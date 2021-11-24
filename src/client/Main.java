@@ -8,17 +8,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import model.Giay;
+import service.GiayMang;
 
 public class Main {
 	public static Scanner sc = new Scanner(System.in);
 	
 	public static void main(String[] args) {
 		int choose;
-//        GiayManager giayMn = new GiayManager();
-        GiayDanhSachLienKetDon giayMn = new GiayDanhSachLienKetDon();
+        GiayMang giayMn = new GiayMang();
+//        GiayDanhSachLienKetDon giayMn = new GiayDanhSachLienKetDon();
         
         do{
-                System.out.println("==================== MENU CHUONG TRINH QUAN LY GIAY ====================");
+                System.out.println("==================== MENU CHUONG TRINH QUAN LY GIAY====================");
 				System.out.println("1. Nhap vao n giay");
 				System.out.println("2. Hien thi thong tin tat ca giay ra man hinh");
 				System.out.println("3. Hien thi tat ca thuong hieu giay");
@@ -72,6 +73,7 @@ public class Main {
                     	System.out.println("7. Tim kiem giay theo ten giay");
                     	System.out.println("Moi ban ten giay can tim: ");
                     	String tenGiay = sc.nextLine();
+                    	System.out.println("Ket qua tim kiem:");
                     	giayMn.TimGiay_TheoTen(tenGiay);
                     	break;
                     case 8:
