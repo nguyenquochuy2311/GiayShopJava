@@ -78,8 +78,8 @@ public class MainTree {
 	            	System.out.println("6. Tim kiem giay theo ma giay");
 	            	System.out.println("Moi ban nhap ma giay can tim: ");
                     int id = Integer.parseInt(sc.nextLine());
-	            	if(giayTree.getListGiay().search_ID(giayTree.getListGiay(), id)!=null) {
-	            		giayTree.setListGiay(giayTree.getListGiay().search_ID(giayTree.getListGiay(), id));
+	            	if(giayTree.search_ID(giayTree.getListGiay(), id)!=null) {
+	            		giayTree.setListGiay(giayTree.search_ID(giayTree.getListGiay(), id));
 	            		System.out.printf("%-11s%-20s%-20s%-11s%s\n","Ma giay","Ten giay","Thuong hieu","Don gia","Ngay san xuat");
 	            		giayTree.getListGiay().getGiay().Xuat();
 	            	}else {
@@ -91,13 +91,13 @@ public class MainTree {
 	            	System.out.println("Moi ban nhap ten giay can tim: ");
                     String ten = sc.nextLine();
 	            	System.out.printf("%-11s%-20s%-20s%-11s%s\n","Ma giay","Ten giay","Thuong hieu","Don gia","Ngay san xuat");
-	            	giayTree.setListGiay(giayTree.getListGiay().search_Ten(giayTree.getListGiay(), ten));
+	            	giayTree.setListGiay(giayTree.search_Ten(giayTree.getListGiay(), ten));
 	            	break;
 	            case 8:
 	            	System.out.println("8. Cap nhat giay");
 	            	System.out.println("Moi ban nhap ma giay can xoa: ");
                     int id1 = Integer.parseInt(sc.nextLine());
-	            	if(giayTree.getListGiay().search_ID(giayTree.getListGiay(), id1)==null) {
+	            	if(giayTree.search_ID(giayTree.getListGiay(), id1)==null) {
 	            		System.out.println("Khong tim thay ma giay = "+ id1);
 	            		break;
 	            	}else {
@@ -108,11 +108,11 @@ public class MainTree {
 	            	System.out.println("9. Xoa giay theo ma giay");
 	            	System.out.println("Moi ban nhap ma giay can xoa: ");
                     int id2 = Integer.parseInt(sc.nextLine());
-	            	if(giayTree.getListGiay().search_ID(giayTree.getListGiay(), id2)==null) {
+	            	if(giayTree.search_ID(giayTree.getListGiay(), id2)==null) {
 	            		System.out.println("Khong tim thay ma giay = "+ id2);
 	            		break;
 	            	}else {
-	            		giayTree.getListGiay().deleteNode(giayTree.getListGiay(), id2);
+	            		giayTree.deleteNode(giayTree.getListGiay(), id2);
 	            		System.out.println("Xoa thanh cong");
 	            	}
 	            	break;
