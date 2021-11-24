@@ -3,6 +3,7 @@ package client;
 import java.util.Scanner;
 
 import service.GiayTree;
+import service.NodeGiay;
 
 public class MainTree {
 
@@ -21,6 +22,7 @@ public class MainTree {
 			System.out.println("5. Hien thi thong tin theo theo cap do (duyet theo chieu rong)");	
 			System.out.println("6. Tim kiem giay theo ma giay");
 			System.out.println("7. Tim kiem giay theo ten giay");
+			System.out.println("9. Xoa giay theo ma giay");
 			System.out.println("0. Thoat");
             System.out.println("==============================================================================");
             System.out.println("Moi ban nhap lua chon: ");
@@ -89,6 +91,18 @@ public class MainTree {
                     String ten = sc.nextLine();
 	            	System.out.printf("%-11s%-20s%-20s%-11s%s\n","Ma giay","Ten giay","Thuong hieu","Don gia","Ngay san xuat");
 	            	giayTree.setListGiay(giayTree.getListGiay().search_Ten(giayTree.getListGiay(), ten));
+	            	break;
+	            case 9:
+	            	System.out.println("9. Xoa giay theo ma giay");
+	            	System.out.println("Moi ban nhap ma giay can tim: ");
+                    int id1 = Integer.parseInt(sc.nextLine());
+	            	if(giayTree.getListGiay().search_ID(giayTree.getListGiay(), id1)==null) {
+	            		System.out.println("Khong tim thay ma giay = "+ id1);
+	            		break;
+	            	}else {
+	            		giayTree.getListGiay().deleteNode(giayTree.getListGiay(), id1);
+	            		System.out.println("Xoa thanh cong");
+	            	}
 	            	break;
 	            default:
                 	System.err.println("Nhap sai! Moi ban nhap lai lua chon");
