@@ -2,6 +2,7 @@ package service;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.concurrent.LinkedBlockingDeque;
 
 import DAO.GiayDAO;
 import model.Giay;
@@ -37,7 +38,6 @@ public class GiayTree {
             }
             listGiay.insert(listGiay, G);
         }	
-        listGiay.preOrderROLR(listGiay);
         giayDao.NhapFile(listGiay);
     }
 	
@@ -60,5 +60,43 @@ public class GiayTree {
 				maxVal = tmp.getGiay().getma_giay();
 		}
 		return maxVal;
+	}
+	
+	public void preOrderROLR(NodeGiay n) {
+		if(n!=null) {
+			n.getGiay().Xuat();
+			preOrderROLR(n.getLeft());
+			preOrderROLR(n.getRight());
+		}
+	}
+	
+	public void inOrderLROR(NodeGiay n) {
+		if (null != this) {
+			if (null != n.getLeft())
+				inOrderLROR(n.getLeft());
+			n.getGiay().Xuat();
+			if (null != n.getRight())
+				inOrderLROR(n.getRight());
+		}
+	}
+
+	public void postOrderLRRO(NodeGiay n) {
+		if (null != n) {
+			postOrderLRRO(n.getLeft());
+			postOrderLRRO(n.getRight());
+			n.getGiay().Xuat();
+		}
+	}
+	public void levelOrder(NodeGiay n) {
+		if(null==n) return;
+		Queue<NodeGiay> q=new LinkedBlockingDeque<>();
+		q.add(n);
+		while(!q.isEmpty()){
+			if(null!=q.peek().getLeft())
+				q.add(q.peek().getLeft());
+			if(null!=q.peek().getRight())
+				q.add(q.peek().getRight());
+			q.poll().getGiay().Xuat();
+		}
 	}
 }

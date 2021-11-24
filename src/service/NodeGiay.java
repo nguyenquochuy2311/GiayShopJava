@@ -43,44 +43,6 @@ public class NodeGiay {
 		this.giay = giay;
 	}
 	
-	public void preOrderROLR(NodeGiay n) {
-		if(n!=null) {
-			n.getGiay().Xuat();
-			preOrderROLR(n.getLeft());
-			preOrderROLR(n.getRight());
-		}
-	}
-	
-	public void inOrderLROR() {
-		if (null != this) {
-			if (null != this.getLeft())
-				this.getLeft().inOrderLROR();
-			this.getGiay().Xuat();
-			if (null != this.getRight())
-				this.getRight().inOrderLROR();
-		}
-	}
-
-	public static void postOrderLRRO(NodeGiay n) {
-		if (null != n) {
-			postOrderLRRO(n.getLeft());
-			postOrderLRRO(n.getRight());
-			n.getGiay().Xuat();
-		}
-	}
-	public static void levelOrder(NodeGiay n) {
-		if(null==n) return;
-		Queue<NodeGiay> q=new LinkedBlockingDeque<>();
-		q.add(n);
-		while(!q.isEmpty()){
-			if(null!=q.peek().getLeft())
-				q.add(q.peek().getLeft());
-			if(null!=q.peek().getRight())
-				q.add(q.peek().getRight());
-			q.poll().getGiay().Xuat();
-		}
-	}
-	
 	public NodeGiay insert(NodeGiay node, Giay value){
 		  if(node == null){
 		    return new NodeGiay(value);
